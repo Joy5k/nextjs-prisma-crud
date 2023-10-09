@@ -37,6 +37,7 @@ model post{
   post_comment post_comment[]
   post_meta post_meta[]
   post_category post_category[]
+  post_tag post_tag[]
 }
 model category{
   id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
@@ -69,11 +70,14 @@ model tag{
   metaTile String @db.VarChar(100)
   slug String @db.VarChar(100)
   content String @db.Text
+  post_tag post_tag[]
 }
 model post_tag{
   id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
   postId BigInt @db.UnsignedBigInt
   tagId BigInt @db.UnsignedBigInt
+  post post @relation(fields: [postId],references: [id],onDelete: Restrict,onUpdate: Cascade)
+  tag tag @relation(fields: [tagId],references: [id],onDelete: Restrict,onUpdate: Cascade)
 }
 model post_meta{
   id BigInt @id @default(autoincrement()) @db.UnsignedBigInt

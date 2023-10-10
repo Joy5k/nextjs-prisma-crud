@@ -17,8 +17,11 @@ model user{
   mobile String @db.VarChar(15)
   email String @db.VarChar(50)
   password String @db.VarChar(32)
+   Intro String @db.TinyText
+  profile String @db.Text
   registered DateTime @default(now()) @db.Timestamp
   lastLogin DateTime @default(now()) @db.Timestamp @updatedAt
+   
  post post[]
 }
 model post{
@@ -30,6 +33,7 @@ model post{
   slug      String @db.VarChar(100)
   summary  String @db.TinyText
   published Int? @default(1) @db.TinyInt
+  content String @db.Text
   created_at DateTime @default(now()) @db.Timestamp
   updated_at DateTime @default(now()) @db.Timestamp @updatedAt
   pulblished_at DateTime @default(now()) @db.Timestamp 

@@ -71,7 +71,7 @@ model post_comment{
 model tag{
   id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
   title String @db.VarChar(100)
-  metaTile String @db.VarChar(100)
+  metaTitle String @db.VarChar(100)
   slug String @db.VarChar(100)
   content String @db.Text
   post_tag post_tag[]
